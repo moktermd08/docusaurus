@@ -40,9 +40,12 @@ function BreadcrumbsItemLink({
       <span itemProp="name">{children}</span>
     </Link>
   ) : (
-    <span className={className} itemProp="item name">
-      {children}
-    </span>
+    // TODO Google search console doesn't like breadcrumb items without href.
+    // The schema doesn't seem to require `id` for each `item`, although Google
+    // insist to infer one, even if it's invalid. Removing `itemProp="item
+    // name"` for now, since I don't know how to properly fix it.
+    // See https://github.com/facebook/docusaurus/issues/7241
+    <span className={className}>{children}</span>
   );
 }
 
